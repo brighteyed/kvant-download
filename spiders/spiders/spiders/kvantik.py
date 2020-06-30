@@ -1,6 +1,6 @@
 import scrapy
 
-from spiders.items import KvantItem
+from spiders.items import Issue
 
 
 class KvantikSpider(scrapy.Spider):
@@ -10,7 +10,7 @@ class KvantikSpider(scrapy.Spider):
 
     def parse(self, response):
         for item in response.css('div.gallery'):
-            yield KvantItem(cover=response.urljoin(item.css('a img::attr(src)').get()),
+            yield Issue(cover=response.urljoin(item.css('a img::attr(src)').get()),
                 file=response.urljoin(item.css('a::attr(href)').get()))
             
         

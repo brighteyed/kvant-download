@@ -1,7 +1,7 @@
 import re
 import scrapy
 
-from spiders.items import KvantItem
+from spiders.items import Issue
 
 class KvantSpider(scrapy.Spider):
     name = 'kvant'
@@ -21,7 +21,7 @@ class KvantSpider(scrapy.Spider):
         for link in links:
             href = link.attrib['href']
             if href.endswith('.pdf') or href.endswith('.djvu'):
-                yield KvantItem(file=response.urljoin(href), text=link.css('::text').get())
+                yield Issue(file=response.urljoin(href), text=link.css('::text').get())
             else:
                 yield response.follow(url=href, callback=self.parse_page)
 
@@ -30,7 +30,7 @@ class KvantSpider(scrapy.Spider):
         for link in links:
             href = link.attrib['href']
             if href.endswith('.djvu'):
-                item = KvantItem(file=response.urljoin(href))
+                item = Issue(file=response.urljoin(href))
 
                 img = link.css('img')
                 if len(img) != 0:
@@ -44,7 +44,7 @@ class KvantSpider(scrapy.Spider):
         links = response.xpath('//a[@href]')
         for link in links:
             if re.match(pattern, link.attrib['href']):
-                item = KvantItem(
+                item = Issue(
                     cover=response.urljoin(link.xpath('./../../..').xpath('.//img').attrib['src']),
                     file=response.urljoin(link.attrib['href']))
 
