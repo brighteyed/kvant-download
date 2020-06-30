@@ -14,9 +14,10 @@
                 "crawl",
                 "kvant",
                 "-o",
-                "kvant.json"
+                "..\\kvant.json"
             ],
-            "console": "integratedTerminal"
+            "console": "integratedTerminal",
+            "preLaunchTask": "clean"
         }
     ]
 }

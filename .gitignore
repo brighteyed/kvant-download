@@ -149,5 +149,5 @@ cython_debug/
 .history/
 
 # Project output
-spiders/kvantik.json
-spiders/kvant.json
+kvantik.json
+kvant.json
