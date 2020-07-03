@@ -15,9 +15,7 @@ class KvantikSpider(scrapy.Spider):
 
         "FEEDS": {
             "kvantik.json": {"format": "json"}
-        },
-        
-        "FEED_EXPORT_ENCODING": 'utf-8',
+        }
     }
 
     def parse(self, response):

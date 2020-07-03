@@ -13,9 +13,7 @@ class KvantSpider(scrapy.Spider):
 
         "FEEDS": {
             "kvant.json": {"format": "json"}
-        },
-        
-        "FEED_EXPORT_ENCODING": 'utf-8',
+        }
     }
 
     def start_requests(self):

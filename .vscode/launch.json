@@ -10,7 +10,10 @@
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
             "console": "integratedTerminal",
-            "preLaunchTask": "clean:all"
+            "preLaunchTask": "clean:all",
+            "env": {
+                "SCRAPY_SETTINGS_MODULE": "spiders.settings"
+            }
         },
         {
             "name": "Kvant",
