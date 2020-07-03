@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "clean",
+            "label": "clean:kvant",
             "type": "shell",
             "command": "del",
             "args": [
@@ -21,6 +21,25 @@
 
                     "cwd": "${workspaceFolder}"
                 },
-        }
+        },
+        {
+            "label": "clean:kvantik",
+            "type": "shell",
+            "command": "del",
+            "args": [
+                "/Q", "kvantik.json"
+            ], 
+            "options": 
+                {
+                    "shell": {
+                        "executable": "cmd.exe",
+                        "args": [
+                            "/d", "/c"
+                        ]
+                    },
+
+                    "cwd": "${workspaceFolder}"
+                },
+        }        
     ]
 }

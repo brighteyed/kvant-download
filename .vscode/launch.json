@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Module",
+            "name": "Kvant",
             "type": "python",
             "request": "launch",
             "module": "scrapy",
@@ -17,7 +17,22 @@
                 "..\\kvant.json"
             ],
             "console": "integratedTerminal",
-            "preLaunchTask": "clean"
+            "preLaunchTask": "clean:kvant"
+        },
+        {
+            "name": "Kvantik",
+            "type": "python",
+            "request": "launch",
+            "module": "scrapy",
+            "cwd": "${workspaceFolder}/spiders",
+            "args": [
+                "crawl",
+                "kvantik",
+                "-o",
+                "..\\kvantik.json"
+            ],
+            "console": "integratedTerminal",
+            "preLaunchTask": "clean:kvantik"
         }
     ]
 }
