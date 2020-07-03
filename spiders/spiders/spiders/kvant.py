@@ -1,11 +1,22 @@
 import re
 import scrapy
 
-from spiders.items import Issue
+from ..items import Issue
 
 class KvantSpider(scrapy.Spider):
     name = 'kvant'
 
+    custom_settings = {
+        "ITEM_PIPELINES": {
+            'spiders.pipelines.IssuePipeline': 300,
+        },
+
+        "FEEDS": {
+            "kvant.json": {"format": "json"}
+        },
+        
+        "FEED_EXPORT_ENCODING": 'utf-8',
+    }
 
     def start_requests(self):
         """Entry point"""

@@ -5,6 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Kvant and Kvantik",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/spiders/main.py",
+            "console": "integratedTerminal",
+            "preLaunchTask": "clean:all"
+        },
+        {
             "name": "Kvant",
             "type": "python",
             "request": "launch",

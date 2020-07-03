@@ -40,6 +40,13 @@
 
                     "cwd": "${workspaceFolder}"
                 },
+        },
+        {
+            "label": "clean:all",
+            "dependsOn": [
+				"clean:kvant",
+				"clean:kvantik"
+            ],        
         }        
     ]
 }
