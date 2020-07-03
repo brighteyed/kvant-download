@@ -8,7 +8,7 @@
             "name": "Kvant and Kvantik",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/spiders/main.py",
+            "program": "${workspaceFolder}/main.py",
             "console": "integratedTerminal",
             "preLaunchTask": "clean:all"
         },
@@ -17,12 +17,12 @@
             "type": "python",
             "request": "launch",
             "module": "scrapy",
-            "cwd": "${workspaceFolder}/spiders",
+            "cwd": "${workspaceFolder}",
             "args": [
                 "crawl",
                 "kvant",
                 "-o",
-                "..\\kvant.json"
+                "kvant.json"
             ],
             "console": "integratedTerminal",
             "preLaunchTask": "clean:kvant"
@@ -32,12 +32,12 @@
             "type": "python",
             "request": "launch",
             "module": "scrapy",
-            "cwd": "${workspaceFolder}/spiders",
+            "cwd": "${workspaceFolder}",
             "args": [
                 "crawl",
                 "kvantik",
                 "-o",
-                "..\\kvantik.json"
+                "kvantik.json"
             ],
             "console": "integratedTerminal",
             "preLaunchTask": "clean:kvantik"

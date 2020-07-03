@@ -1,6 +1,6 @@
 import scrapy
 
-from ..items import Issue
+from spiders.items import Issue
 
 class KvantikSpider(scrapy.Spider):
     name = 'kvantik'

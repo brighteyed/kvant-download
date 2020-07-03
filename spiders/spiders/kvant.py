@@ -1,7 +1,7 @@
 import re
 import scrapy
 
-from ..items import Issue
+from spiders.items import Issue
 
 class KvantSpider(scrapy.Spider):
     name = 'kvant'
