@@ -1,5 +1,6 @@
 import scrapy
 
+
 class Issue(scrapy.Item):
     file = scrapy.Field()
     text = scrapy.Field()
