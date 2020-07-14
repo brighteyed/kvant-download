@@ -1,5 +1,7 @@
 import scrapy
 
+from typing import Iterator
+
 from spiders.items import Issue
 
 
@@ -16,7 +18,7 @@ class KvantikSpider(scrapy.Spider):
         "FEEDS": {"kvantik.json": {"format": "json"}},
     }
 
-    def parse(self, response):
+    def parse(self, response: scrapy.http.Response) -> Iterator[Issue]:
         for item in response.css("div.gallery"):
             yield Issue(
                 cover=response.urljoin(item.css("a img::attr(src)").get()),

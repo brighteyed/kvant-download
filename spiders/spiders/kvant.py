@@ -1,6 +1,8 @@
 import re
 import scrapy
 
+from typing import Iterator, Union
+
 from spiders.items import Issue
 
 
@@ -12,7 +14,7 @@ class KvantSpider(scrapy.Spider):
         "FEEDS": {"kvant.json": {"format": "json"}},
     }
 
-    def start_requests(self):
+    def start_requests(self) -> Iterator[scrapy.http.Request]:
         """Entry point"""
 
         archive_urls = ["http://kvant.mccme.ru/oblozhka_djvu.htm"] + [
@@ -23,7 +25,9 @@ class KvantSpider(scrapy.Spider):
 
         yield scrapy.Request(url="http://kvant.mccme.ru/", callback=self.parse_main)
 
-    def parse_main(self, response):
+    def parse_main(
+        self, response: scrapy.http.Response
+    ) -> Union[Iterator[Issue], scrapy.http.Request]:
         links = (
             response.css("font.hdr b")[-1]
             .xpath("../../../../../../*")[-1]
@@ -37,7 +41,7 @@ class KvantSpider(scrapy.Spider):
             else:
                 yield response.follow(url=href, callback=self.parse_page)
 
-    def parse_archive(self, response):
+    def parse_archive(self, response: scrapy.http.Response) -> Iterator[Issue]:
         links = response.css("div a")
         for link in links:
             href = link.attrib["href"]
@@ -50,7 +54,7 @@ class KvantSpider(scrapy.Spider):
 
                 yield item
 
-    def parse_page(self, response):
+    def parse_page(self, response: scrapy.http.Response) -> Iterator[Issue]:
         pattern = re.compile(r".*\-b\.pdf")
         links = response.xpath("//a[@href]")
         for link in links:

@@ -1,5 +1,9 @@
 import re
 
+import scrapy
+
+from typing import Any
+
 from scrapy.exceptions import DropItem
 from itemadapter import ItemAdapter
 
@@ -9,7 +13,7 @@ class IssuePipeline:
     ISSUE_FROM_TEXT = re.compile(r"\D?(\d+)(\D?\d?)")
     YEAR = re.compile(r".*([1-2][0-9]{3})")
 
-    def process_item(self, item, spider):
+    def process_item(self, item: Any, spider: scrapy.Spider) -> Any:
         adapter = ItemAdapter(item)
 
         match = re.match(self.YEAR, adapter["file"])
@@ -38,7 +42,7 @@ class IssuePipeline:
 
 
 class DropSamplesPipeline:
-    def process_item(self, item, spider):
+    def process_item(self, item: Any, spider: scrapy.Spider) -> Any:
 
         adapter = ItemAdapter(item)
         if adapter["file"].endswith("_sample.pdf"):
